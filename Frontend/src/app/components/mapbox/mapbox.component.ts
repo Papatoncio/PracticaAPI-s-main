@@ -8,9 +8,9 @@ import { environment } from '../../../environments/environment.prod';
   styleUrls: ['./mapbox.component.css'],
 })
 export class MapboxComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getLocation() {
     if (navigator.geolocation) {
@@ -74,6 +74,16 @@ export class MapboxComponent implements OnInit {
         new mapboxgl.Marker({ color: 'yellow' })
           .setLngLat([-100.9336587190047, 21.165674056147658])
           .setPopup(popupY)
+          .addTo(map);
+
+        const CasaJP = new mapboxgl.Popup().setHTML(`
+        <h6 style="color: black;">Gimnasio Amarillo</h6>
+        <span style="color: black;">Este es un gimnasio Pokemon</span>
+        `);
+
+        new mapboxgl.Marker({ color: 'turquoise' })
+          .setLngLat([-100.75643228334121, 20.942983783794542])
+          .setPopup(CasaJP)
           .addTo(map);
       });
     }
