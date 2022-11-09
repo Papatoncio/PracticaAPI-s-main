@@ -1,0 +1,13 @@
+.over {
+  cursor: pointer;
+}
+
+.logo {
+  max-height: 7vh;
+  width: auto;
+}
+
+.pokeIcon {
+  max-height: 3vh;
+  width: auto;
+}

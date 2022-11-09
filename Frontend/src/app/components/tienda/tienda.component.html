@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col" *ngFor="let item of products">
+    <div class="card border-dark mb-2 m-auto">
+      <div class="card-header">
+        {{ item.name }}
+      </div>
+      <div class="card-body text-center">
+        <img [src]="item.imgUrl" class="img-fluid mb-2 rounded-2" />
+        <p>{{ item.description }}</p>
+        <p>Categoria: {{ item.category }}</p>
+        <p>Precio ${{ item.price }} MXN</p>
+        <button class="btn btn-success">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
