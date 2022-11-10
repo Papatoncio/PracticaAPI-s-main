@@ -21,16 +21,15 @@ export const signUp = async (req, res) => {
   }
 
   const savedUser = await newUser.save();
-  console.log(savedUser);
 
   const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
     expiresIn: 86400, //24 horas
   });
 
   const name = savedUser.username;
-  const role = savedUser.roles;
+  const UserRole = savedUser.roles;
 
-  res.status(200).json({ token, name, role });
+  res.status(200).json({ token, name, UserRole });
 };
 
 export const signIn = async (req, res) => {

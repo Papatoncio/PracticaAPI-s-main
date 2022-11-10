@@ -21,10 +21,9 @@ export class SignupComponent implements OnInit {
   signUp() {
     this.authService.signUp(this.user).subscribe(
       (res: any) => {
-        console.log(res);
         localStorage.setItem('token', res.token);
         localStorage.setItem('name', res.name);
-        this.router.navigate(['/tienda']);
+        this.router.navigate(['/pokedex']);
       },
       (err) => {
         console.log(err);

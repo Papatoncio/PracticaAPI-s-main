@@ -21,7 +21,6 @@ export class TiendaComponent implements OnInit {
   ngOnInit(): void {
     this.tiendaService.getProduct().subscribe(
       (res: any) => {
-        console.log(res);
         this.products = res;
       },
       (err) => console.log(err)
