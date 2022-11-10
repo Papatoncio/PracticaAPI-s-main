@@ -28,8 +28,9 @@ export const signUp = async (req, res) => {
   });
 
   const name = savedUser.username;
+  const role = savedUser.roles;
 
-  res.status(200).json({ token, name });
+  res.status(200).json({ token, name, role });
 };
 
 export const signIn = async (req, res) => {
@@ -55,6 +56,7 @@ export const signIn = async (req, res) => {
   });
 
   const name = userFound.username;
+  const role = userFound.roles;
 
-  res.json({ token, name });
+  res.json({ token, name, role });
 };
