@@ -1,1 +1,88 @@
-<p>crud-products works!</p>
+<div class="row">
+  <div class="col-md-5 mx-auto">
+    <div class="card">
+      <div class="card-header bg-dark text-center">
+        <h3>Agregar nuevo Producto</h3>
+      </div>
+      <div class="card-body">
+        <form (submit)="createProduct()">
+          <label for="nameP">Nombre del Producto</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            name="name"
+            id="nameP"
+            [(ngModel)]="product.name"
+            required
+          />
+
+          <label for="categoryP">Categoria</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            name="category"
+            id="categoryP"
+            [(ngModel)]="product.category"
+            required
+          />
+
+          <label for="descriptionP">Descripción</label>
+          <textarea
+            class="form-control mb-2"
+            name="description"
+            id="descriptionP"
+            [(ngModel)]="product.description"
+            rows="5"
+          ></textarea>
+
+          <label for="priceP">Precio</label>
+          <input
+            type="number"
+            class="form-control mb-2"
+            name="price"
+            id="priceP"
+            [(ngModel)]="product.price"
+            required
+          />
+
+          <label for="stockP">Stock</label>
+          <input
+            type="number"
+            class="form-control mb-2"
+            name="stock"
+            id="stockP"
+            [(ngModel)]="product.stock"
+            required
+          />
+
+          <label for="imUrlP">URL de la imagen</label>
+          <input
+            type="url"
+            class="form-control mb-2"
+            name="imgUrl"
+            id="imgUrlP"
+            [(ngModel)]="product.imgUrl"
+            required
+          />
+          <button class="btn btn-success">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5 mx-auto">
+    <div class="card">
+      <div class="card-header bg-dark text-center">
+        <h3>Previsualización</h3>
+      </div>
+      <div class="card-body text-center">
+        <h6 class="mb-2">{{ product.name }}</h6>
+        <p class="mb-2">Categoria: {{ product.category }}</p>
+        <img [src]="product.imgUrl" class="img-fluid rounded-2 mb-2" />
+        <p class="mb-2">{{ product.description }}</p>
+        <p class="mb-2">${{ product.price }} MXN</p>
+        <p>Hay {{ product.stock }} piezas en stock</p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>

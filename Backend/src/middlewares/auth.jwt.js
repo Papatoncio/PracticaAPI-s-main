@@ -21,7 +21,7 @@ export const verifyToken = async (req, res, next) => {
 
     next();
   } catch (error) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Necesitas Autorizacion" });
   }
 };
 

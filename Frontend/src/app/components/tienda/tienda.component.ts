@@ -13,9 +13,12 @@ export class TiendaComponent implements OnInit {
   constructor(private tiendaService: TiendaService, private router:Router) {}
 
   ngOnInit(): void {
-    this.tiendaService.getProducts()
-    .subscribe(data => {
-      this.product = data;
-    })
+    this.tiendaService.getProduct().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.product = res;
+      },
+      (err) => console.log(err)
+    );
   }
 }

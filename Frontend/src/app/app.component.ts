@@ -10,6 +10,18 @@ import { FbLoginService } from './services/fbLogin.service';
 })
 export class AppComponent {
   name = localStorage.getItem('name');
+  role = localStorage.getItem('role');
 
-  constructor(public authService: AuthService, public fbLoginService:FbLoginService) {}
+  constructor(
+    public authService: AuthService,
+    public fbLoginService: FbLoginService
+  ) {}
+
+  validRole() {
+    if (this.role == 'admin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

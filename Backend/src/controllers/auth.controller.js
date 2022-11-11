@@ -3,8 +3,13 @@ import jwt from "jsonwebtoken";
 import config from "../config";
 import Role from "../models/Role";
 
+//Registro
 export const signUp = async (req, res) => {
   const { username, email, password, roles } = req.body;
+
+  if ((username && email && password) == "") {
+    return res.status(400).json({ message: "Debes llenar todos los campos" });
+  }
 
   const newUser = new User({
     username,
@@ -21,17 +26,18 @@ export const signUp = async (req, res) => {
   }
 
   const savedUser = await newUser.save();
-  console.log(savedUser);
 
   const token = jwt.sign({ id: savedUser._id }, config.SECRET, {
     expiresIn: 86400, //24 horas
   });
 
   const name = savedUser.username;
+  const UserRole = savedUser.roles;
 
-  res.status(200).json({ token, name });
+  res.status(200).json({ token, name, UserRole });
 };
 
+//Iniciar Sesion
 export const signIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
     "roles"
@@ -55,6 +61,7 @@ export const signIn = async (req, res) => {
   });
 
   const name = userFound.username;
+  const role = userFound.roles;
 
-  res.json({ token, name });
+  res.json({ token, name, role });
 };
