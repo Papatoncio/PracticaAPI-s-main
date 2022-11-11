@@ -7,20 +7,14 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 export class TiendaService {
-  product:Product[];
+  product: Product[];
   private URL = 'http://localhost:4000/api';
-<<<<<<< HEAD
-  private URL1 = 'http://localhost:4000/api/products';
-  constructor(private htt: HttpClient) {}
-=======
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
->>>>>>> 04e1990927298996a50e72549ade71cea537c4e4
-
-  getProducts(): Observable<Product[]>{
-    return this.htt.get<Product[]>(this.URL + '/products');
-  } createProduct(product:Product):Observable<Product[]>{
-    return this.htt.post<Product[]>(this.URL + '/products', product);
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.URL + '/products');
+  } createProducts(product: Product): Observable<Product[]> {
+    return this.http.post<Product[]>(this.URL + '/products', product);
   }
 
   getProduct() {
