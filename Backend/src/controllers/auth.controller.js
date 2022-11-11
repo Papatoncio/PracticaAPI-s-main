@@ -6,6 +6,10 @@ import Role from "../models/Role";
 export const signUp = async (req, res) => {
   const { username, email, password, roles } = req.body;
 
+  if ((username && email && password) == "") {
+    return res.status(400).json({ message: "Debes llenar todos los campos" });
+  }
+
   const newUser = new User({
     username,
     email,
