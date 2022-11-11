@@ -13,9 +13,15 @@ export const createProduct = async (req, res) => {
     imgUrl,
   });
 
+  if (!(name && category && description && imgUrl && price && stock)) {
+    return res.status(400).json({ message: "Debes llenar todos los campos" });
+  }
+
   const productSaved = await newProduct.save();
 
-  res.status(201).json(productSaved);
+  res
+    .status(201)
+    .json(productSaved, { message: "Producto Agregado Con Exito" });
 };
 
 //Lista Productos
@@ -42,6 +48,7 @@ export const updateProductById = async (req, res) => {
   res.status(200).json(updatedProduct);
 };
 
+//Borrar Producto
 export const deleteProductById = async (req, res) => {
   const { productId } = req.params;
   const deletedProduct = await Product.findByIdAndDelete(productId);
