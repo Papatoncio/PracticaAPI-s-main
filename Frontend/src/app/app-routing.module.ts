@@ -9,6 +9,8 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthGuard } from './auth.guard';
 import { PokeappComponent } from './components/pokeapp/pokeapp.component';
 import { MapboxComponent } from './components/mapbox/mapbox.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 const routes: Routes = [
   {

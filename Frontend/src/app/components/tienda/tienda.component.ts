@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
 import { TiendaService } from '../../services/tienda.service';
 
 @Component({
@@ -8,23 +9,13 @@ import { TiendaService } from '../../services/tienda.service';
   styleUrls: ['./tienda.component.css'],
 })
 export class TiendaComponent implements OnInit {
-  products = [
-    { name: '' },
-    { category: '' },
-    { description: '' },
-    { price: 0 },
-    { stock: 0 },
-    { imgUrl: '' },
-  ];
-  constructor(private tiendaService: TiendaService) {}
+  product: Product[] = [];
+  constructor(private tiendaService: TiendaService, private router:Router) {}
 
   ngOnInit(): void {
-    this.tiendaService.getProduct().subscribe(
-      (res: any) => {
-        console.log(res);
-        this.products = res;
-      },
-      (err) => console.log(err)
-    );
+    this.tiendaService.getProducts()
+    .subscribe(data => {
+      this.product = data;
+    })
   }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,13 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { PokeappComponent } from './components/pokeapp/pokeapp.component';
 import { MapboxComponent } from './components/mapbox/mapbox.component';
 import { SocialAuthServiceConfig, FacebookLoginProvider, SocialUser, SocialLoginModule } from 'angularx-social-login';
+import { ModalComponent } from './components/modal/modal.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +31,13 @@ import { SocialAuthServiceConfig, FacebookLoginProvider, SocialUser, SocialLogin
     TiendaComponent,
     PokeappComponent,
     MapboxComponent,
+    ModalComponent,
+    CartComponent,
+    CartItemComponent,
+    ProductItemComponent,
+    ProductListComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, SocialLoginModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, SocialLoginModule, NgxPayPalModule, NgxSpinnerModule],
   providers: [
     AuthGuard,
     {
@@ -46,6 +58,8 @@ import { SocialAuthServiceConfig, FacebookLoginProvider, SocialUser, SocialLogin
       } as SocialAuthServiceConfig,
     },
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   bootstrap: [AppComponent],
 })
 export class AppModule { }
