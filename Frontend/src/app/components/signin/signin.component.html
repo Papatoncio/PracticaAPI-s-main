@@ -5,18 +5,31 @@
       <div class="col-md-5">
         <form (submit)="signIn()" class="m-5">
           <div class="form-group mt-2">
-            <input type="email" [(ngModel)]="user.email" name="email" class="form-control"
-              placeholder="Correo Electronico" required autofocus />
+            <input
+              type="email"
+              [(ngModel)]="user.email"
+              name="email"
+              class="form-control"
+              placeholder="Correo Electronico"
+              required
+              autofocus
+            />
           </div>
           <div class="form-group mt-2">
-            <input type="password" [(ngModel)]="user.password" name="password" class="form-control"
-              placeholder="Contraseña" required />
+            <input
+              type="password"
+              [(ngModel)]="user.password"
+              name="password"
+              class="form-control"
+              placeholder="Contraseña"
+              required
+            />
           </div>
-          <button type="submit" class="btn btn-warning mt-2 rounded-4">
+          <button type="submit" class="btn btn-md btn-warning mt-4 rounded-4">
             Iniciar Sesion
           </button>
-          <br><br>
-          <div style="text-align: center">
+          <br /><br />
+          <div class="text-center">
             <button
               type="button"
               class="loginBtn loginBtn--facebook"
@@ -24,6 +37,8 @@
             >
               Login con Facebook
             </button>
+            <p class="mt-2">¿No tienes cuenta?</p>
+            <a routerLink="/signup">Registrate</a>
           </div>
         </form>
       </div>
@@ -36,9 +51,11 @@
           de hacer mas facil tu aventura.
         </p>
         <br />
-        <img class="img-fluid mb-4"
+        <img
+          class="img-fluid mb-4"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
-          alt="" />
+          alt=""
+        />
       </div>
     </div>
   </div>

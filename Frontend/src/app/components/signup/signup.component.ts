@@ -23,7 +23,9 @@ export class SignupComponent implements OnInit {
       (res: any) => {
         localStorage.setItem('token', res.token);
         localStorage.setItem('name', res.name);
-        this.router.navigate(['/pokedex']);
+        this.router.navigate(['/pokedex']).then(() => {
+          window.location.reload();
+        });
       },
       (err) => {
         console.log(err);
