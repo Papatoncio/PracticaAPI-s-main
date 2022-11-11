@@ -31,4 +31,19 @@ app.use("/api/products", productsRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 
+// app.use((req, res, next) => {
+//   const err = new Error("Error en el back");
+//   err.status = 404;
+//   next(err);
+// });
+
+// app.use((err, req, res, next) => {
+//   res.locals.error = err;
+//   res.status(err.status || 500);
+//   res.json({
+//     message: err.message,
+//     error: err,
+//   });
+// });
+
 export default app;

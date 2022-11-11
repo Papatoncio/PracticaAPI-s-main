@@ -25,11 +25,10 @@ export class CRUDProductsComponent implements OnInit {
   createProduct() {
     this.tiendaService.createProduct(this.product, this.token).subscribe(
       (res: any) => {
-        console.log(res);
         window.alert(res.message);
+        window.location.reload();
       },
       (err) => {
-        console.log(err);
         window.alert(err.error);
       }
     );

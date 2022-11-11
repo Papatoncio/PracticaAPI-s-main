@@ -17,11 +17,9 @@ export const createProduct = async (req, res) => {
     return res.status(400).json({ message: "Debes llenar todos los campos" });
   }
 
-  const productSaved = await newProduct.save();
+  await newProduct.save();
 
-  res
-    .status(201)
-    .json(productSaved, { message: "Producto Agregado Con Exito" });
+  res.status(201).json({ message: "Producto Agregado Con Exito" });
 };
 
 //Lista Productos
