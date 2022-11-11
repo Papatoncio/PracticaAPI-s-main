@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import config from "../config";
 import Role from "../models/Role";
 
+//Registro
 export const signUp = async (req, res) => {
   const { username, email, password, roles } = req.body;
 
@@ -36,6 +37,7 @@ export const signUp = async (req, res) => {
   res.status(200).json({ token, name, UserRole });
 };
 
+//Iniciar Sesion
 export const signIn = async (req, res) => {
   const userFound = await User.findOne({ email: req.body.email }).populate(
     "roles"
