@@ -8,7 +8,7 @@ input {
   padding: 10px;
 }
 
-.poke-card {
+.poke-carder {
   position: relative;
   height: fit-content;
   font-family: 'Roboto Mono', monospace;
@@ -22,7 +22,7 @@ input {
   border: 1px solid black;
 }
 
-.poke-card::before {
+.poke-carder::before {
   content: '';
   background: radial-gradient(black 33%, transparent 33%);
   background-size: 3px 3px;
@@ -35,7 +35,7 @@ input {
   z-index: -1;
 }
 
-.img-container {
+.img-containered {
   position: relative;
   width: 180px;
   margin: 10px auto;
@@ -56,7 +56,7 @@ input {
   border: 1px dashed black;
 }
 
-.poke-img {
+.poke-imge {
   width: 180px;
   border-radius: 50%;
 }

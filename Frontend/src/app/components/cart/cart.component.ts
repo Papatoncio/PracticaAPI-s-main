@@ -7,15 +7,14 @@ import { Component, OnInit } from '@angular/core';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { environmentCart } from 'src/environments/enviromentCart';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-
   cartItems = [];
   total = 0;
 
@@ -26,7 +25,7 @@ export class CartComponent implements OnInit {
     private storageService: StorageService,
     private modalService: NgbModal,
     private spinner: NgxSpinnerService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.initConfig();
@@ -40,42 +39,53 @@ export class CartComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'MXN',
-      clientId: environmentCart.clientId,
+      clientId: environment.clientId,
       // tslint:disable-next-line: no-angle-bracket-type-assertion
-      createOrderOnClient: (data) => <ICreateOrderRequest> {
-        intent: 'CAPTURE',
-        purchase_units: [{
-          amount: {
-            currency_code: 'MXN',
-            value: this.getTotal().toString(),
-            breakdown: {
-              item_total: {
+      createOrderOnClient: (data) =>
+        <ICreateOrderRequest>{
+          intent: 'CAPTURE',
+          purchase_units: [
+            {
+              amount: {
                 currency_code: 'MXN',
-                value: this.getTotal().toString()
-              }
-            }
-          },
-          items: this.getItemsList()
-        }]
-      },
+                value: this.getTotal().toString(),
+                breakdown: {
+                  item_total: {
+                    currency_code: 'MXN',
+                    value: this.getTotal().toString(),
+                  },
+                },
+              },
+              items: this.getItemsList(),
+            },
+          ],
+        },
       advanced: {
-        commit: 'true'
+        commit: 'true',
       },
       style: {
         label: 'paypal',
-        layout: 'vertical'
+        layout: 'vertical',
       },
       onApprove: (data, actions) => {
         this.spinner.show();
-        console.log('onApprove - transaction was approved, but not authorized', data, actions);
-        actions.order.get().then(details => {
-          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        console.log(
+          'onApprove - transaction was approved, but not authorized',
+          data,
+          actions
+        );
+        actions.order.get().then((details) => {
+          console.log(
+            'onApprove - you can get full order details inside onApprove: ',
+            details
+          );
         });
-
       },
       onClientAuthorization: (data) => {
-        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point',
-        JSON.stringify(data));
+        console.log(
+          'onClientAuthorization - you should probably inform your server about completed transaction at this point',
+          JSON.stringify(data)
+        );
         this.openModal(
           data.purchase_units[0].items,
           data.purchase_units[0].amount.value
@@ -86,7 +96,7 @@ export class CartComponent implements OnInit {
       onCancel: (data, actions) => {
         console.log('OnCancel', data, actions);
       },
-      onError: err => {
+      onError: (err) => {
         console.log('OnError', err);
       },
       onClick: (data, actions) => {
@@ -98,7 +108,7 @@ export class CartComponent implements OnInit {
   getItem(): void {
     this.messageService.getMessage().subscribe((product: Product) => {
       let exists = false;
-      this.cartItems.forEach(item => {
+      this.cartItems.forEach((item) => {
         if (item.productId === product.name) {
           exists = true;
           item.qty++;
@@ -120,7 +130,7 @@ export class CartComponent implements OnInit {
       item = {
         name: it.productName,
         quantity: it.qty,
-        unit_amount: {value: it.productPrice, currency_code: 'MXN'}
+        unit_amount: { value: it.productPrice, currency_code: 'MXN' },
       };
       items.push(item);
     });
@@ -129,7 +139,7 @@ export class CartComponent implements OnInit {
 
   getTotal(): number {
     let total = 0;
-    this.cartItems.forEach(item => {
+    this.cartItems.forEach((item) => {
       total += item.qty * item.productPrice;
     });
     return +total.toFixed(2);
@@ -156,5 +166,4 @@ export class CartComponent implements OnInit {
     modalRef.componentInstance.items = items;
     modalRef.componentInstance.amount = amount;
   }
-
 }
