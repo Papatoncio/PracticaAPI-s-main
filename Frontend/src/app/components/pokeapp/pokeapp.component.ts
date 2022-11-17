@@ -7,9 +7,11 @@ import { LoadScriptsService } from '../../services/load-scripts.service';
   styleUrls: ['./pokeapp.component.css'],
 })
 export class PokeappComponent implements OnInit {
+
   constructor(private ldScript: LoadScriptsService) {
     ldScript.loadScript();
   }
 
   ngOnInit(): void {}
+
 }

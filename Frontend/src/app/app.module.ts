@@ -21,6 +21,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { StreamComponent } from './components/stream/stream.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
     CartComponent,
     CartItemComponent,
     ProductItemComponent,
-    ProductListComponent
+    ProductListComponent,
+    StreamComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, SocialLoginModule, NgxPayPalModule, NgxSpinnerModule],
   providers: [

@@ -11,6 +11,7 @@ import { PokeappComponent } from './components/pokeapp/pokeapp.component';
 import { MapboxComponent } from './components/mapbox/mapbox.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { StreamComponent } from './components/stream/stream.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,11 @@ const routes: Routes = [
   {
     path: 'mapbox',
     component: MapboxComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'stream',
+    component: StreamComponent,
     canActivate: [AuthGuard],
   },
 ];
